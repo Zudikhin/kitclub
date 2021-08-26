@@ -96,6 +96,17 @@ $(document).ready(function () {
         $(this).addClass("active");
     });
 
+    if($(window).width() < 1199) {
+        $(".project_main_hero_item_configurator_list_item_body_item_title_img").click(function() {
+            $(this).toggleClass("open");
+        });
+    }
+
+    $(document).on('click',function (e) {
+        var el = '.project_main_hero_item_configurator_list_item_body_item_title_img';
+        if (jQuery(e.target).closest(el).length) return;
+        $(".project_main_hero_item_configurator_list_item_body_item_title_img").removeClass("open");
+    });
 
 });
 

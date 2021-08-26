@@ -158,7 +158,7 @@ div:focus {
   left: 0px;
   width: 100%;
   height: 56px;
-  z-index: 4;
+  z-index: 5;
 }
 
 .header_content {
@@ -469,7 +469,7 @@ div:focus {
           transform: translateX(-500px);
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
-  z-index: 3;
+  z-index: 5;
 }
 
 .header_dropdown.active {
@@ -640,8 +640,8 @@ div:focus {
 .houses_item_list_square span {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 14px;
+  line-height: 16px;
   color: #414553;
 }
 
@@ -761,7 +761,7 @@ div:focus {
   position: absolute;
   left: -15px;
   top: -15px;
-  background-color: red;
+  background: rgba(255, 255, 255, 0.2);
   -webkit-backdrop-filter: blur(7px);
           backdrop-filter: blur(7px);
   height: calc(100% + 15px);
@@ -1678,6 +1678,11 @@ div:focus {
   background: url(../img/project/configurator/popup/arrow.png);
   width: 20px;
   height: 20px;
+}
+
+.project_main_hero_item_configurator_list_item_body_item_title_img.open .project_main_hero_item_configurator_list_item_body_item_title_img_popup {
+  display: block;
+  z-index: 1;
 }
 
 .project_main_hero_item_configurator_list_item_body_item_title p {
@@ -3009,9 +3014,11 @@ div:focus {
   }
 }
 
-.project_main_hero_item_configurator_list_item_body_item_title_img:hover .project_main_hero_item_configurator_list_item_body_item_title_img_popup {
-  display: block;
-  z-index: 1;
+@media (min-width: 1200px) {
+  .project_main_hero_item_configurator_list_item_body_item_title_img:hover .project_main_hero_item_configurator_list_item_body_item_title_img_popup {
+    display: block;
+    z-index: 1;
+  }
 }
 
 .back_modal {
