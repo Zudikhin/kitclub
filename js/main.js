@@ -97,8 +97,11 @@ $(document).ready(function () {
     });
 
     if($(window).width() < 1199) {
-        $(".project_main_hero_item_configurator_list_item_body_item_title_img").click(function() {
-            $(this).toggleClass("open");
+        $(".project_main_hero_item_configurator_list_item_body_item_title_img").click(function() { 
+            var inner = $(this).find(".project_main_hero_item_configurator_list_item_body_item_title_img_popup").html();
+            $(".modal_info_content").html(inner);
+            $(".back_info").addClass("active");
+            $(".modal_info").addClass("active");
         });
     }
 
@@ -106,6 +109,53 @@ $(document).ready(function () {
         var el = '.project_main_hero_item_configurator_list_item_body_item_title_img';
         if (jQuery(e.target).closest(el).length) return;
         $(".project_main_hero_item_configurator_list_item_body_item_title_img").removeClass("open");
+    });
+
+    $(".project_main_hero_item_configurator_list_item_body_item").click(function() {
+        $(this).siblings().removeClass("active");
+        $(this).addClass("active");
+        var priceItem = $(this).find(".project_main_hero_item_configurator_list_item_body_item_price").children().attr('value');
+        var textPriceItem = $(this).find(".project_main_hero_item_configurator_list_item_body_item_price").children().text();
+        priceItem = parseInt(priceItem);
+        $(this).parent().siblings().find("span").attr('value', priceItem);
+        $(this).parent().siblings().find("span").text(textPriceItem);
+        totalBase();
+    });
+
+    function totalBase() {
+        var total = 0;
+        $(".project_main_hero_item_configurator_list_item").each(function() {
+            var price = $(this).find(".project_main_hero_item_configurator_list_item_title").find("span").attr("value");
+            price = parseInt(price);
+            total += price;
+        });
+        var insertTotal;
+        var textTotal = '' + total;
+        if(textTotal.length == 5) {
+            var onePart = textTotal.slice(0, 2);
+            var twoPart = textTotal.slice(2, 5);
+            insertTotal = onePart + ' ' + twoPart;
+        } else if(textTotal.length == 6) {
+            var onePart = textTotal.slice(0, 3);
+            var twoPart = textTotal.slice(3, 6);
+            insertTotal = onePart + ' ' + twoPart;
+        } else if(textTotal.length == 7) {
+            var onePart = textTotal.slice(0, 1);
+            var twoPart = textTotal.slice(1, 4);
+            var threePart = textTotal.slice(4, 7);
+            insertTotal = onePart + ' ' + twoPart + ' ' + threePart;
+        } else if(textTotal.length == 8) {
+            var onePart = textTotal.slice(0, 2);
+            var twoPart = textTotal.slice(2, 5);
+            var threePart = textTotal.slice(5, 8);
+            insertTotal = onePart + ' ' + twoPart + ' ' + threePart;
+        }
+        $(".project_main_hero_item_configurator_total_base .project_main_hero_item_configurator_total_number").text(insertTotal + ' ₽');
+    } 
+
+    $(".back_info").click(function() {
+        $(this).removeClass("active");
+        $(".modal_info").removeClass("active");
     });
 
 });
