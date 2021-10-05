@@ -153,6 +153,8 @@ $(document).ready(function () {
         $(".project_main_hero_item_configurator_total_base .project_main_hero_item_configurator_total_number").text(insertTotal + ' ₽');
     } 
 
+    totalBase();
+
     $(".back_info").click(function() {
         $(this).removeClass("active");
         $(".modal_info").removeClass("active");
