@@ -755,6 +755,7 @@ div:focus {
 
 .project {
   position: relative;
+  margin-bottom: 100px;
 }
 
 .project_back {
