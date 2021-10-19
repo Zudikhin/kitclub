@@ -49,20 +49,26 @@ $(document).ready(function () {
         var attr = $(this).attr("data-target");
         $(".project_main_hero_item").removeClass("active");
         $("#" + attr).addClass("active");
+        if(attr == 'about') {
+            $(".project_main_images_block_details").removeClass("active");
+            $(".project_main_images_block_default").addClass("active");
+        } else if(attr == 'color') {
+            $(".project_main_images_block_details").removeClass("active");
+            $(".project_main_images_block_default").addClass("active");
+        } else if(attr == 'configurator') {
+            $(".project_main_images_block_default").removeClass("active");
+            $(".project_main_images_block_details").addClass("active");
+        } else if(attr == 'contractor') {
+            $(".project_main_images_block_default").removeClass("active");
+            $(".project_main_images_block_details").addClass("active");
+        } else {
+            $(".project_main_images_block_default").removeClass("active");
+            $(".project_main_images_block_details").addClass("active");
+        }
     });
 
     $(".project_main_hero_item_configurator_list_item_title").click(function() {
         $(this).parent().toggleClass("accord");
-    });
-
-    $(".project_main_hero_item_color_facade_list_item").click(function() {
-        $(".project_main_hero_item_color_facade_list_item").removeClass("active");
-        $(this).addClass("active");
-    });
-
-    $(".project_main_hero_item_color_platbands_list_item").click(function() {
-        $(".project_main_hero_item_color_platbands_list_item").removeClass("active");
-        $(this).addClass("active");
     });
 
     $(".project_back").click(function() {
@@ -80,6 +86,24 @@ $(document).ready(function () {
         $(".project_back").removeClass("active");
         $(".project_main_menu_mobile_btn_sticks").removeClass("active");
         $(".project_dropdown").removeClass("active");
+
+        if(attrMobile == 'about') {
+            $(".project_main_images_block_details").removeClass("active");
+            $(".project_main_images_block_default").addClass("active");
+        } else if(attrMobile == 'color') {
+            $(".project_main_images_block_details").removeClass("active");
+            $(".project_main_images_block_default").addClass("active");
+        } else if(attrMobile == 'configurator') {
+            $(".project_main_images_block_default").removeClass("active");
+            $(".project_main_images_block_details").addClass("active");
+        } else if(attrMobile == 'contractor') {
+            $(".project_main_images_block_default").removeClass("active");
+            $(".project_main_images_block_details").addClass("active");
+        } else {
+            $(".project_main_images_block_default").removeClass("active");
+            $(".project_main_images_block_details").addClass("active");
+        }
+
     });
 
     $(".project_main_hero_item_contractor_title_manuf").click(function() {
@@ -158,6 +182,25 @@ $(document).ready(function () {
     $(".back_info").click(function() {
         $(this).removeClass("active");
         $(".modal_info").removeClass("active");
+    });
+
+    $(".project_main_hero_item_color_facade_list_item").click(function() {
+        $(".project_main_hero_item_color_facade_list_item").removeClass("active");
+        $(this).addClass("active");
+        var colorFacade = $(this).attr("data-target");
+        var colorWindow = $(".project_main_hero_item_color_platbands_list").find(".active").attr("data-target");
+        $(".project_main_images_block_item img").removeClass("active");
+        $("." + colorFacade + '_' + colorWindow).addClass("active");
+    });
+
+
+    $(".project_main_hero_item_color_platbands_list_item").click(function() {
+        $(".project_main_hero_item_color_platbands_list_item").removeClass("active");
+        $(this).addClass("active");
+        var colorWindow = $(this).attr("data-target");
+        var colorFacade = $(".project_main_hero_item_color_facade_list").find(".active").attr("data-target");
+        $(".project_main_images_block_item img").removeClass("active");
+        $("." + colorFacade + '_' + colorWindow).addClass("active");
     });
 
 });
